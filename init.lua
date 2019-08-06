@@ -1,3 +1,6 @@
+-- 设置动画时间
+hs.window.animationDuration = 0
+
 -- 左上角移动
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "Y", function()
   local win = hs.window.focusedWindow()
@@ -6,6 +9,18 @@ hs.hotkey.bind({"cmd", "alt", "ctrl"}, "Y", function()
   f.x = f.x - 10
   f.y = f.y - 10
   win:setFrame(f)
+end)
+
+-- 返回桌面
+hs.hotkey.bind({"alt", "ctrl"}, "D", function()
+    local desktop = hs.window.desktop()
+    desktop:focus()
+end)
+
+-- 放到屏幕中间
+hs.hotkey.bind({"alt", "ctrl"}, "J", function()
+  local win = hs.window.focusedWindow()
+  win:centerOnScreen()
 end)
 
 -- move left
@@ -100,7 +115,7 @@ hs.hotkey.bind({"alt", "ctrl"}, "Down", function()
   win:setFrame(f)
 end)
 
--- 全屏显示
+-- 最大化显示
 hs.hotkey.bind({"alt", "ctrl"}, "Return", function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
@@ -114,7 +129,50 @@ hs.hotkey.bind({"alt", "ctrl"}, "Return", function()
   win:setFrame(f)
 end)
 
+-- 全屏显示
+hs.hotkey.bind({"cmd", "alt", "ctrl"}, "Return", function()
+  local win = hs.window.focusedWindow()
+  if (win:isFullScreen())
+  then
+    win:setFullScreen(false)
+  else
+    win:setFullScreen(true)
+  end
+end)
+
+-- 最小化
+hs.hotkey.bind({"alt", "ctrl"}, "M", function()
+  local win = hs.window.focusedWindow()
+  win:minimize()
+end)
+
+
+-- 移动到右边屏幕
+hs.hotkey.bind({"alt", "cmd"}, "Right", function()
+  local win = hs.window.focusedWindow()
+  win:moveOneScreenEast()
+end)
+
+-- 移动到左边屏幕
+hs.hotkey.bind({"alt", "cmd"}, "Left", function()
+  local win = hs.window.focusedWindow()
+  win:moveOneScreenWest()
+end)
+
+-- 移动到上边屏幕
+hs.hotkey.bind({"alt", "cmd"}, "Up", function()
+  local win = hs.window.focusedWindow()
+  win:moveOneScreenNorth()
+end)
+
+-- 移动到下边屏幕
+hs.hotkey.bind({"alt", "cmd"}, "Down", function()
+  local win = hs.window.focusedWindow()
+  win:moveOneScreenSouth()
+end)
 hs.hotkey.bind({"alt", "ctrl"}, "R", function()
   hs.reload()
+  hs.alert.show("Config loaded")
 end)
-hs.alert.show("Config loaded")
+
+
