@@ -121,11 +121,19 @@ hs.hotkey.bind({"alt", "ctrl"}, "Return", function()
   local f = win:frame()
   local screen = win:screen()
   local max = screen:frame()
-
-  f.x = max.x
-  f.y = max.y
-  f.w = max.w
-  f.h = max.h
+  
+  if (f.w == max.w and f.h == max.h)
+  then
+      f.x = max.x + (max.w / 4)
+      f.y = max.y + (max.h / 4)
+      f.w = max.w / 2
+      f.h = max.h / 2
+  else
+      f.x = max.x
+      f.y = max.y
+      f.w = max.w
+      f.h = max.h
+  end
   win:setFrame(f)
 end)
 
@@ -172,7 +180,7 @@ hs.hotkey.bind({"alt", "cmd"}, "Down", function()
 end)
 hs.hotkey.bind({"alt", "ctrl"}, "R", function()
   hs.reload()
-  hs.alert.show("Config loaded")
 end)
+hs.alert.show("Config loaded")
 
 

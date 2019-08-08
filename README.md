@@ -1,4 +1,4 @@
-# hsconfig 快捷键
+# hsconfig
 
 ## 使用说明
 
