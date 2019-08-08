@@ -124,9 +124,9 @@ hs.hotkey.bind({"alt", "ctrl"}, "Return", function()
   
   if (f.w == max.w and f.h == max.h)
   then
-      f.x = max.x + (max.w / 4)
+      f.x = max.x + (max.w / 6)
       f.y = max.y + (max.h / 4)
-      f.w = max.w / 2
+      f.w = max.w / 3 * 2
       f.h = max.h / 2
   else
       f.x = max.x
